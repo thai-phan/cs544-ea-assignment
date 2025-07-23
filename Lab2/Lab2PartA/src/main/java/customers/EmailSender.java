@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service()
 public class EmailSender implements IEmailSender {
-	@Value("mail.server")
+	@Value("${mail.server}")
 	String outgoingMailServer;
 
 	@Autowired
