@@ -16,7 +16,7 @@ public class Order {
   private String date;
   private String status;
 
-  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "customer_id")
   private Customer customer;
 

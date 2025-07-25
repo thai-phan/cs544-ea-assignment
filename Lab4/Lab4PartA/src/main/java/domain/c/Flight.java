@@ -1,7 +1,7 @@
 package domain.c;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 public class Flight {
@@ -21,12 +21,13 @@ public class Flight {
   public Flight() {
   }
 
-  public Flight(String from, String to, LocalDate date) {
+  public Flight(String from, String to, Date date) {
     this.date = date;
     this.from = from;
     this.to = to;
   }
 
-  private LocalDate date;
+  @Temporal(TemporalType.DATE)
+  private Date date;
 
 }

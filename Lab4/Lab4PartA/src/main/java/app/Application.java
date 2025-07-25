@@ -18,6 +18,7 @@ import repositories.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @SpringBootApplication
@@ -55,13 +56,13 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    testA();
+//    testA();
     System.out.println("--------------------------------------------------");
-    testB();
+//    testB();
     System.out.println("--------------------------------------------------");
     testC();
     System.out.println("--------------------------------------------------");
-    testD();
+//    testD();
   }
 
   public void testA() {
@@ -103,8 +104,8 @@ public class Application implements CommandLineRunner {
   public void testC() {
     Passenger passenger = new Passenger("Alice");
 
-    Flight flight1 = new Flight("Boston", "New York", LocalDate.now());
-    Flight flight2 = new Flight("New York", "London", LocalDate.of(2025, 5, 20));
+    Flight flight1 = new Flight("Boston", "New York", Date.valueOf("2025-05-15"));
+    Flight flight2 = new Flight("New York", "London", Date.valueOf("2025-05-20"));
 
     passenger.addFlight(flight1);
     passenger.addFlight(flight2);

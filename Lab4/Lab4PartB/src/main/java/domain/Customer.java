@@ -14,7 +14,7 @@ public class Customer {
   private String firstname;
   private String lastname;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "address_id")
   private Address address;
 

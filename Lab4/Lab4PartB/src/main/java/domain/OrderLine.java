@@ -13,7 +13,7 @@ public class OrderLine {
   private int quantity;
 
 
-  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
   @JoinColumn(name = "product_id")
   private Product product;
 

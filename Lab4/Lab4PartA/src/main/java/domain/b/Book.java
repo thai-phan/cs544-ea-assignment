@@ -13,7 +13,9 @@ public class Book {
   private String author;
 
   @ManyToOne(optional = false)
-  @JoinColumn(name = "publisher_id", nullable = false)
+  @JoinTable(name = "book_publisher",
+      joinColumns = @JoinColumn(name = "book_isbn", referencedColumnName = "isbn"),
+      inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
   private Publisher publisher;
 
   protected Book() {
