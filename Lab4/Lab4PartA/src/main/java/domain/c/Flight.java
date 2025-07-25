@@ -1,7 +1,7 @@
 package domain.c;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class Flight {
@@ -21,7 +21,8 @@ public class Flight {
   public Flight() {
   }
 
-  public Flight(String from, String to, Date date) {
+  public Flight(String flightNumber, String from, String to, Date date) {
+    this.flightNumber = flightNumber;
     this.date = date;
     this.from = from;
     this.to = to;

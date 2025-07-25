@@ -104,8 +104,8 @@ public class Application implements CommandLineRunner {
   public void testC() {
     Passenger passenger = new Passenger("Alice");
 
-    Flight flight1 = new Flight("Boston", "New York", Date.valueOf("2025-05-15"));
-    Flight flight2 = new Flight("New York", "London", Date.valueOf("2025-05-20"));
+    Flight flight1 = new Flight("VN123", "Boston", "New York", Date.valueOf("2025-05-15"));
+    Flight flight2 = new Flight("US345", "New York", "London", Date.valueOf("2025-05-20"));
 
     passenger.addFlight(flight1);
     passenger.addFlight(flight2);
