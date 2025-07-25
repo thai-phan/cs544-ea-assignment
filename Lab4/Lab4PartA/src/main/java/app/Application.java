@@ -55,11 +55,12 @@ public class Application implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-//    testA();
+    testA();
     System.out.println("--------------------------------------------------");
-//    testB();
+    testB();
     System.out.println("--------------------------------------------------");
-//    testC();
+    testC();
+    System.out.println("--------------------------------------------------");
     testD();
   }
 
