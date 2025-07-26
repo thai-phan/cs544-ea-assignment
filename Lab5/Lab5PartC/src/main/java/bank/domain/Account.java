@@ -10,29 +10,30 @@ import java.util.*;
 public class Account {
 
   @Id
-  long accountnumber;
+  long accountNumber;
 
-  @OneToMany()
-  Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @JoinColumn(name = "account_id")
+  Collection<AccountEntry> entryList = new ArrayList<>();
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   Customer customer;
 
 
   public Account(long accountnr) {
-    this.accountnumber = accountnr;
+    this.accountNumber = accountnr;
   }
 
   protected Account() {
 
   }
 
-  public long getAccountnumber() {
-    return accountnumber;
+  public long getAccountNumber() {
+    return accountNumber;
   }
 
-  public void setAccountnumber(long accountnumber) {
-    this.accountnumber = accountnumber;
+  public void setAccountNumber(long accountnumber) {
+    this.accountNumber = accountnumber;
   }
 
   public double getBalance() {
@@ -58,8 +59,8 @@ public class Account {
   }
 
   public void transferFunds(Account toAccount, double amount, String description) {
-    AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, "" + toAccount.getAccountnumber(), toAccount.getCustomer().getName());
-    AccountEntry toEntry = new AccountEntry(new Date(), amount, description, "" + toAccount.getAccountnumber(), toAccount.getCustomer().getName());
+    AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, "" + toAccount.getAccountNumber(), toAccount.getCustomer().getName());
+    AccountEntry toEntry = new AccountEntry(new Date(), amount, description, "" + toAccount.getAccountNumber(), toAccount.getCustomer().getName());
     entryList.add(fromEntry);
     toAccount.addEntry(toEntry);
   }
