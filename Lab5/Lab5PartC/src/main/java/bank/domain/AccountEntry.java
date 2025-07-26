@@ -1,9 +1,6 @@
 package bank.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,17 +11,23 @@ public class AccountEntry {
 	@GeneratedValue
 	private Long id;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "entry_date")
 	private Date date;
+
+	@Column(name = "entry_amount")
 	private double amount;
+
+	@Column(name = "entry_description")
 	private String description;
+
 	private String fromAccountNumber;
 	private String fromPersonName;
 	
-	public AccountEntry() {
+	protected AccountEntry() {
 	}
 
 	public AccountEntry(Date date, double amount, String description, String fromAccountNumber, String fromPersonName) {
-		super();
 		this.date = date;
 		this.amount = amount;
 		this.description = description;
@@ -71,5 +74,5 @@ public class AccountEntry {
 	public void setFromPersonName(String fromPersonName) {
 		this.fromPersonName = fromPersonName;
 	}
-	
+
 }

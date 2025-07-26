@@ -38,6 +38,7 @@ public class AccountService implements IAccountService {
     Customer customer = CustomerAdapter.getCustomerFromDTO(customerDTO);
 
     account.setCustomer(customer);
+
     accountRepository.save(account);
     logger.log("createAccount with parameters accountNumber= " + accountNumber + " , customerName= " + customerName);
     return accountDTO;

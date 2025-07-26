@@ -12,16 +12,16 @@ public class Account {
   @Id
   long accountNumber;
 
-  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "account_id")
   Collection<AccountEntry> entryList = new ArrayList<>();
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   Customer customer;
 
 
-  public Account(long accountnr) {
-    this.accountNumber = accountnr;
+  public Account(long accountNumber) {
+    this.accountNumber = accountNumber;
   }
 
   protected Account() {
