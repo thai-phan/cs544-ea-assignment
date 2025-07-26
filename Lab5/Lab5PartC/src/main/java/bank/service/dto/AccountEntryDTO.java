@@ -9,7 +9,7 @@ public record AccountEntryDTO(
     double amount,
     String description,
     String fromAccountNumber,
-    String fromPersonName) {
-
+    String fromPersonName
+) {
 }
 

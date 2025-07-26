@@ -2,11 +2,10 @@ package bank;
 
 import java.util.Collection;
 
-import bank.domain.Account;
 import bank.domain.AccountEntry;
-import bank.domain.Customer;
-import bank.service.AccountService;
 import bank.service.IAccountService;
+import bank.service.dto.AccountDTO;
+import bank.service.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,12 +37,12 @@ public class Application implements CommandLineRunner {
 		accountService.transferFunds(4253892, 1263862, 100, "payment of invoice 10232");
 		// show balances
 
-		Collection<Account> accountlist = accountService.getAllAccounts();
-		Customer customer = null;
-		for (Account account : accountlist) {
-			customer = account.getCustomer();
-			System.out.println("Statement for Account: " + account.getAccountnumber());
-			System.out.println("Account Holder: " + customer.getName());
+		Collection<AccountDTO> accounts = accountService.getAllAccounts();
+		CustomerDTO customer;
+		for (AccountDTO account : accounts) {
+			customer = account.getCustomerDTO();
+			System.out.println("Statement for Account: " + account.getAccountNumber());
+			System.out.println("Account Holder: " + customer.name());
 			System.out.println("-Date-------------------------"
 							+ "-Description------------------"
 							+ "-Amount-------------");

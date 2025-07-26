@@ -10,8 +10,9 @@ import java.util.*;
 public class Account {
 
   @Id
-  @GeneratedValue
   long accountnumber;
+
+  @OneToMany()
   Collection<AccountEntry> entryList = new ArrayList<AccountEntry>();
 
   @ManyToOne

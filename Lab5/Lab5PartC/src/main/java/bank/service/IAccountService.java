@@ -3,14 +3,15 @@ package bank.service;
 import java.util.Collection;
 
 import bank.domain.Account;
+import bank.service.dto.AccountDTO;
 
 
 public interface IAccountService {
-  Account createAccount(long accountNumber, String customerName);
+  AccountDTO createAccount(long accountNumber, String customerName);
 
-  Account getAccount(long accountNumber);
+  AccountDTO getAccount(long accountNumber);
 
-  Collection<Account> getAllAccounts();
+  Collection<AccountDTO> getAllAccounts();
 
   void deposit(long accountNumber, double amount);
 

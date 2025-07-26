@@ -1,16 +1,19 @@
 package bank.service;
 
 import java.util.Collection;
+import java.util.Optional;
 
+import bank.dao.AccountRepository;
 import bank.dao.IAccountDAO;
 import bank.domain.Account;
 import bank.domain.Customer;
 import bank.service.adapter.AccountAdapter;
 import bank.service.adapter.CustomerAdapter;
-import bank.service.dto.AccountDTO;
 import bank.jms.IJMSSender;
 import bank.logging.ILogger;
+import bank.service.dto.AccountDTO;
 import bank.service.dto.CustomerDTO;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class AccountService implements IAccountService {
 
   @Autowired
-  private IAccountDAO accountDAO;
+  private AccountRepository accountRepository;
 
   @Autowired
   private ICurrencyConverter currencyConverter;
@@ -30,54 +33,51 @@ public class AccountService implements IAccountService {
   private ILogger logger;
 
 
-  public Account createAccount(long accountNumber, String customerName) {
+  public AccountDTO createAccount(long accountNumber, String customerName) {
     AccountDTO accountDTO = new AccountDTO(accountNumber);
     CustomerDTO customerDTO = new CustomerDTO(customerName);
 
-    Account account = AccountAdapter.getContactFromContactDTO(accountDTO);
+    Account account = AccountAdapter.getAccountFromDTO(accountDTO);
     Customer customer = CustomerAdapter.getCustomerFromDTO(customerDTO);
 
     account.setCustomer(customer);
-    accountDAO.saveAccount(account);
+    accountRepository.save(account);
     logger.log("createAccount with parameters accountNumber= " + accountNumber + " , customerName= " + customerName);
-    return account;
+    return accountDTO;
   }
 
   public void deposit(long accountNumber, double amount) {
-    AccountDTO accountDTO = new AccountDTO(accountNumber);
 
-//    Account account = AccountAdapter.getContactFromContactDTO(accountDTO);
-
-    Account account = accountDAO.loadAccount(accountNumber);
+    Account account = accountRepository.getReferenceById(accountNumber);
     account.deposit(amount);
-    accountDAO.updateAccount(account);
+    accountRepository.save(account);
     logger.log("deposit with parameters accountNumber= " + accountNumber + " , amount= " + amount);
     if (amount > 10000) {
       jmsSender.sendJMSMessage("Deposit of $ " + amount + " to account with accountNumber= " + accountNumber);
     }
   }
 
-  public Account getAccount(long accountNumber) {
-    Account account = accountDAO.loadAccount(accountNumber);
-    return account;
+  public AccountDTO getAccount(long accountNumber) {
+    Account account = accountRepository.getReferenceById(accountNumber);
+    return AccountAdapter.getDTOFromAccount(account);
   }
 
-  public Collection<Account> getAllAccounts() {
-    return accountDAO.getAccounts();
+  public Collection<AccountDTO> getAllAccounts() {
+    return AccountAdapter.getDTOsFromAccounts(accountRepository.findAll());
   }
 
   public void withdraw(long accountNumber, double amount) {
-    Account account = accountDAO.loadAccount(accountNumber);
+    Account account = accountRepository.getReferenceById(accountNumber);
     account.withdraw(amount);
-    accountDAO.updateAccount(account);
+    accountRepository.save(account);
     logger.log("withdraw with parameters accountNumber= " + accountNumber + " , amount= " + amount);
   }
 
   public void depositEuros(long accountNumber, double amount) {
-    Account account = accountDAO.loadAccount(accountNumber);
+    Account account = accountRepository.getReferenceById(accountNumber);
     double amountDollars = currencyConverter.euroToDollars(amount);
     account.deposit(amountDollars);
-    accountDAO.updateAccount(account);
+    accountRepository.save(account);
     logger.log("depositEuros with parameters accountNumber= " + accountNumber + " , amount= " + amount);
     if (amountDollars > 10000) {
       jmsSender.sendJMSMessage("Deposit of $ " + amount + " to account with accountNumber= " + accountNumber);
@@ -85,19 +85,19 @@ public class AccountService implements IAccountService {
   }
 
   public void withdrawEuros(long accountNumber, double amount) {
-    Account account = accountDAO.loadAccount(accountNumber);
+    Account account = accountRepository.getReferenceById(accountNumber);
     double amountDollars = currencyConverter.euroToDollars(amount);
     account.withdraw(amountDollars);
-    accountDAO.updateAccount(account);
+    accountRepository.save(account);
     logger.log("withdrawEuros with parameters accountNumber= " + accountNumber + " , amount= " + amount);
   }
 
   public void transferFunds(long fromAccountNumber, long toAccountNumber, double amount, String description) {
-    Account fromAccount = accountDAO.loadAccount(fromAccountNumber);
-    Account toAccount = accountDAO.loadAccount(toAccountNumber);
+    Account fromAccount = accountRepository.getReferenceById(fromAccountNumber);
+    Account toAccount = accountRepository.getReferenceById(toAccountNumber);
     fromAccount.transferFunds(toAccount, amount, description);
-    accountDAO.updateAccount(fromAccount);
-    accountDAO.updateAccount(toAccount);
+    accountRepository.save(fromAccount);
+    accountRepository.save(toAccount);
     logger.log("transferFunds with parameters fromAccountNumber= " + fromAccountNumber + " , toAccountNumber= " + toAccountNumber + " , amount= " + amount + " , description= " + description);
     if (amount > 10000) {
       jmsSender.sendJMSMessage("TransferFunds of $ " + amount + " from account with accountNumber= " + fromAccount + " to account with accountNumber= " + toAccount);
