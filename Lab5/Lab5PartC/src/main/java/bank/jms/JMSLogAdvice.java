@@ -15,7 +15,7 @@ public class JMSLogAdvice {
   @Autowired
   private ILogger logger;
 
-  @After(value = "execution(* bank.logging.*.*(..)) && args(message)")
+  @After(value = "execution(* bank.jms.*.*(..)) && args(message)")
   public void after(JoinPoint joinpoint, String message) {
     logger.log(LocalDateTime.now() + " method=" + joinpoint.getSignature().getName());
   }
