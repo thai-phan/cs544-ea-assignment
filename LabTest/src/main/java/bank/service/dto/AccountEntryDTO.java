@@ -8,8 +8,6 @@ public record AccountEntryDTO(
     Date date,
     double amount,
     String description,
-    String fromAccountNumber,
-    String fromPersonName
-) {
+    String fromAccountNumber) {
 }
 

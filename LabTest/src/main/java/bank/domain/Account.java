@@ -16,9 +16,6 @@ public class Account {
   @JoinColumn(name = "account_id")
   Collection<AccountEntry> entryList = new ArrayList<>();
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  Customer customer;
-
 
   public Account(long accountNumber) {
     this.accountNumber = accountNumber;
@@ -45,12 +42,12 @@ public class Account {
   }
 
   public void deposit(double amount) {
-    AccountEntry entry = new AccountEntry(new Date(), amount, "deposit", "", "");
+    AccountEntry entry = new AccountEntry(new Date(), amount, "deposit", "");
     entryList.add(entry);
   }
 
   public void withdraw(double amount) {
-    AccountEntry entry = new AccountEntry(new Date(), -amount, "withdraw", "", "");
+    AccountEntry entry = new AccountEntry(new Date(), -amount, "withdraw", "");
     entryList.add(entry);
   }
 
@@ -59,18 +56,10 @@ public class Account {
   }
 
   public void transferFunds(Account toAccount, double amount, String description) {
-    AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, "" + toAccount.getAccountNumber(), toAccount.getCustomer().getName());
-    AccountEntry toEntry = new AccountEntry(new Date(), amount, description, "" + toAccount.getAccountNumber(), toAccount.getCustomer().getName());
+    AccountEntry fromEntry = new AccountEntry(new Date(), -amount, description, "" + toAccount.getAccountNumber());
+    AccountEntry toEntry = new AccountEntry(new Date(), amount, description, "" + toAccount.getAccountNumber());
     entryList.add(fromEntry);
     toAccount.addEntry(toEntry);
-  }
-
-  public Customer getCustomer() {
-    return customer;
-  }
-
-  public void setCustomer(Customer customer) {
-    this.customer = customer;
   }
 
   public Collection<AccountEntry> getEntryList() {

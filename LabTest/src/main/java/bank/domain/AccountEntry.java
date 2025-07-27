@@ -22,17 +22,15 @@ public class AccountEntry {
 	private String description;
 
 	private String fromAccountNumber;
-	private String fromPersonName;
-	
+
 	protected AccountEntry() {
 	}
 
-	public AccountEntry(Date date, double amount, String description, String fromAccountNumber, String fromPersonName) {
+	public AccountEntry(Date date, double amount, String description, String fromAccountNumber) {
 		this.date = date;
 		this.amount = amount;
 		this.description = description;
 		this.fromAccountNumber = fromAccountNumber;
-		this.fromPersonName = fromPersonName;
 	}
 
 	public double getAmount() {
@@ -67,12 +65,5 @@ public class AccountEntry {
 		this.fromAccountNumber = fromAccountNumber;
 	}
 
-	public String getFromPersonName() {
-		return fromPersonName;
-	}
-
-	public void setFromPersonName(String fromPersonName) {
-		this.fromPersonName = fromPersonName;
-	}
 
 }

@@ -12,16 +12,15 @@ public class AccountEntryAdapter {
     return new AccountEntry(accountEntryDTO.date(),
         accountEntryDTO.amount(),
         accountEntryDTO.description(),
-        accountEntryDTO.fromAccountNumber(),
-        accountEntryDTO.fromPersonName());
+        accountEntryDTO.fromAccountNumber());
   }
 
   public static AccountEntryDTO getDTOFromAccountEntry(AccountEntry accountEntry) {
     return new AccountEntryDTO(accountEntry.getDate(),
         accountEntry.getAmount(),
         accountEntry.getDescription(),
-        accountEntry.getFromAccountNumber(),
-        accountEntry.getFromPersonName());
+        accountEntry.getFromAccountNumber()
+    );
   }
 
   public static List<AccountEntryDTO> getDTOsFromContacts(List<AccountEntry> accountEntries) {

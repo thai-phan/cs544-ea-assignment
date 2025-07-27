@@ -1,6 +1,7 @@
-package domain.c;
+package bank.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Passenger {
   private String name;
 
 
-  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "passenger_id")
   @OrderColumn(name = "flight_order")
   private List<Flight> flights = new ArrayList<>();

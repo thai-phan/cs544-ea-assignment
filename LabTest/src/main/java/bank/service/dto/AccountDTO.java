@@ -46,9 +46,6 @@ public class AccountDTO {
     this.accountNumber = accountNumber;
   }
 
-  public void setCustomerDTO(CustomerDTO customerDTO) {
-    this.customerDTO = customerDTO;
-  }
 
   public void setEntryList(Collection<AccountEntry> entryList) {
     this.entryList = entryList;

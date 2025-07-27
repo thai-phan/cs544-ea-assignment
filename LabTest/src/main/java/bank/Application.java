@@ -1,8 +1,12 @@
 package bank;
 
+import java.sql.Date;
 import java.util.Collection;
 
+import bank.dao.PassengerDAO;
 import bank.domain.AccountEntry;
+import bank.domain.Flight;
+import bank.domain.Passenger;
 import bank.service.IAccountService;
 import bank.service.dto.AccountDTO;
 import bank.service.dto.CustomerDTO;
@@ -18,6 +22,9 @@ public class Application implements CommandLineRunner {
   @Autowired
   IAccountService accountService;
 
+  @Autowired
+  PassengerDAO passengerDAO;
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
@@ -25,35 +32,21 @@ public class Application implements CommandLineRunner {
   @Override
   public void run(String... args) {
     // create 2 accounts;
-    accountService.createAccount(1263862, "Frank Brown");
-//    accountService.createAccount(4253892, "John Doe");
-//    //use account 1;
-//    accountService.deposit(1263862, 240);
-//    accountService.deposit(1263862, 529);
-//    accountService.withdrawEuros(1263862, 230);
-//    //use account 2;
-//    accountService.deposit(4253892, 12450);
-//    accountService.depositEuros(4253892, 200);
-//    accountService.transferFunds(4253892, 1263862, 100, "payment of invoice 10232");
-//    // show balances
-//
-//    Collection<AccountDTO> accounts = accountService.getAllAccounts();
-//    CustomerDTO customer;
-//    for (AccountDTO account : accounts) {
-//      customer = account.getCustomerDTO();
-//      System.out.println("Statement for Account: " + account.getAccountNumber());
-//      System.out.println("Account Holder: " + customer.name());
-//      System.out.println("-Date-------------------------"
-//          + "-Description------------------"
-//          + "-Amount-------------");
-//      for (AccountEntry entry : account.getEntryList()) {
-//        System.out.printf("%30s%30s%20.2f\n", entry.getDate().toString(), entry.getDescription(), entry.getAmount());
-//      }
-//      System.out.println("----------------------------------------"
-//          + "----------------------------------------");
-//      System.out.printf("%30s%30s%20.2f\n\n", "", "Current Balance:",
-//          account.getBalance());
-//    }
+//    accountService.createAccount(1263862, "Frank Brown");
+    testC();
+
+
+  }
+  public void testC() {
+    Passenger passenger = new Passenger("Alice");
+
+    Flight flight1 = new Flight("VN123", "Boston", "New York", Date.valueOf("2025-05-15"));
+    Flight flight2 = new Flight("US345", "New York", "London", Date.valueOf("2025-05-20"));
+
+    passenger.addFlight(flight1);
+    passenger.addFlight(flight2);
+
+    passengerDAO.save(passenger);
   }
 }
 

@@ -4,11 +4,7 @@ import java.util.Collection;
 
 import bank.dao.AccountRepository;
 import bank.domain.Account;
-import bank.domain.Customer;
 import bank.service.adapter.AccountAdapter;
-import bank.service.adapter.CustomerAdapter;
-import bank.jms.IJMSSender;
-import bank.logging.ILogger;
 import bank.service.dto.AccountDTO;
 import bank.service.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +19,6 @@ public class AccountService implements IAccountService {
   @Autowired
   private ICurrencyConverter currencyConverter;
 
-  @Autowired
-  private IJMSSender jmsSender;
-
-  @Autowired
-  private ILogger logger;
 
 
   public AccountDTO createAccount(long accountNumber, String customerName) {
@@ -38,13 +29,10 @@ public class AccountService implements IAccountService {
 //    Customer customer = CustomerAdapter.getCustomerFromDTO(customerDTO);
 
     Account account = new Account(accountNumber);
-    Customer customer = new Customer(customerName);
     account.deposit(10.00);
 
-    account.setCustomer(customer);
 
     accountRepository.save(account);
-    logger.log("createAccount with parameters accountNumber= " + accountNumber + " , customerName= " + customerName);
     return accountDTO;
   }
 
@@ -53,10 +41,6 @@ public class AccountService implements IAccountService {
     Account account = accountRepository.getAccountByAccountNumber(accountNumber);
     account.deposit(amount);
     accountRepository.save(account);
-    logger.log("deposit with parameters accountNumber= " + accountNumber + " , amount= " + amount);
-    if (amount > 10000) {
-      jmsSender.sendJMSMessage("Deposit of $ " + amount + " to account with accountNumber= " + accountNumber);
-    }
   }
 
   public AccountDTO getAccount(long accountNumber) {
@@ -72,7 +56,6 @@ public class AccountService implements IAccountService {
     Account account = accountRepository.getAccountByAccountNumber(accountNumber);
     account.withdraw(amount);
     accountRepository.save(account);
-    logger.log("withdraw with parameters accountNumber= " + accountNumber + " , amount= " + amount);
   }
 
   public void depositEuros(long accountNumber, double amount) {
@@ -80,10 +63,6 @@ public class AccountService implements IAccountService {
     double amountDollars = currencyConverter.euroToDollars(amount);
     account.deposit(amountDollars);
     accountRepository.save(account);
-    logger.log("depositEuros with parameters accountNumber= " + accountNumber + " , amount= " + amount);
-    if (amountDollars > 10000) {
-      jmsSender.sendJMSMessage("Deposit of $ " + amount + " to account with accountNumber= " + accountNumber);
-    }
   }
 
   public void withdrawEuros(long accountNumber, double amount) {
@@ -91,7 +70,6 @@ public class AccountService implements IAccountService {
     double amountDollars = currencyConverter.euroToDollars(amount);
     account.withdraw(amountDollars);
     accountRepository.save(account);
-    logger.log("withdrawEuros with parameters accountNumber= " + accountNumber + " , amount= " + amount);
   }
 
   public void transferFunds(long fromAccountNumber, long toAccountNumber, double amount, String description) {
@@ -100,9 +78,5 @@ public class AccountService implements IAccountService {
     fromAccount.transferFunds(toAccount, amount, description);
     accountRepository.save(fromAccount);
     accountRepository.save(toAccount);
-    logger.log("transferFunds with parameters fromAccountNumber= " + fromAccountNumber + " , toAccountNumber= " + toAccountNumber + " , amount= " + amount + " , description= " + description);
-    if (amount > 10000) {
-      jmsSender.sendJMSMessage("TransferFunds of $ " + amount + " from account with accountNumber= " + fromAccount + " to account with accountNumber= " + toAccount);
-    }
   }
 }

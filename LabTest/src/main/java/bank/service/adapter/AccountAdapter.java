@@ -15,7 +15,6 @@ public class AccountAdapter {
 
   public static AccountDTO getDTOFromAccount(Account account) {
     AccountDTO accountDTO = new AccountDTO(account.getAccountNumber());
-    accountDTO.setCustomerDTO(CustomerAdapter.getDTOFromCustomer(account.getCustomer()));
     accountDTO.setEntryList(account.getEntryList());
     accountDTO.setBalance(account.getBalance());
     return accountDTO;
