@@ -1,4 +1,4 @@
-package bank.service.aop;
+package bank.dao;
 
 import bank.logging.ILogger;
 import org.aspectj.lang.JoinPoint;
@@ -11,12 +11,13 @@ import java.time.LocalDateTime;
 
 @Aspect
 @Configuration
-public class JMSLogAdvice {
+public class DAOLogAdvice {
   @Autowired
   private ILogger logger;
 
-  @After(value = "execution(* bank.logging.*.*(..)) && args(message)")
-  public void after(JoinPoint joinpoint, String message) {
-    logger.log(LocalDateTime.now() + " method=" + joinpoint.getSignature().getName() + " message="+message);
+  @After(value = "execution(* bank.dao.*.*(..))")
+  public void after(JoinPoint joinpoint) {
+    logger.log(LocalDateTime.now() + " method=" + joinpoint.getSignature().getName());
   }
+
 }

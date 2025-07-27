@@ -1,4 +1,4 @@
-package bank.service.aop;
+package bank.service;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

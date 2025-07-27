@@ -2,7 +2,6 @@ package bank.service;
 
 import java.util.Collection;
 
-import bank.domain.Account;
 import bank.service.dto.AccountDTO;
 
 

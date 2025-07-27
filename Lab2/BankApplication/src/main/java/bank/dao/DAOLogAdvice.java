@@ -1,4 +1,4 @@
-package bank.service.aop;
+package bank.dao;
 
 import bank.logging.ILogger;
 import org.aspectj.lang.JoinPoint;
