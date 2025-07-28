@@ -6,18 +6,18 @@ import jakarta.persistence.Id;
 
 
 @Entity
-public class Customer {
+public class CustomerRN {
     @Id
     @GeneratedValue
     private long id;
 	private String name;
 
 
-    public Customer(){
+    public CustomerRN(){
     	
     }
 
-	public Customer(String name) {
+	public CustomerRN(String name) {
 		this.name = name;
 	}
 

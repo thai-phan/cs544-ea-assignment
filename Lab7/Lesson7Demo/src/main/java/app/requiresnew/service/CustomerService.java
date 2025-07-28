@@ -1,5 +1,5 @@
 package app.requiresnew.service;
-import app.requiresnew.domain.Customer;
+import app.requiresnew.domain.CustomerRN;
 import app.requiresnew.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ public class CustomerService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void createCustomer(String name){
-        Customer customer = new Customer(name);
+        CustomerRN customerRN = new CustomerRN(name);
         if (name.equals("Bob")) throw new RuntimeException("Cannot save Bob");
-        customerRepository.save(customer);
+        customerRepository.save(customerRN);
 
     }
 }

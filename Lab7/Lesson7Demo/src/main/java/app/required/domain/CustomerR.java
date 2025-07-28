@@ -2,23 +2,20 @@ package app.required.domain;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 
 @Entity
-public class Customer {
+public class CustomerR {
   @Id
   @GeneratedValue
   private long id;
   private String name;
 
 
-  public Customer() {
+  public CustomerR() {
 
   }
 
-  public Customer(String name) {
+  public CustomerR(String name) {
     this.name = name;
   }
 

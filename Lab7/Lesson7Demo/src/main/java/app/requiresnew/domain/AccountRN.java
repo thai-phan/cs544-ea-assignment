@@ -1,21 +1,21 @@
-package app.required.domain;
+package app.requiresnew.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
-public class Account {
+public class AccountRN {
     @Id
     @GeneratedValue
     private long id;
     private int accountNumber;
     private String accountType;
 
-    public Account() {
+    public AccountRN() {
     }
 
-    public Account(int accountNumber, String accountType) {
+    public AccountRN(int accountNumber, String accountType) {
         this.accountNumber = accountNumber;
         this.accountType = accountType;
     }

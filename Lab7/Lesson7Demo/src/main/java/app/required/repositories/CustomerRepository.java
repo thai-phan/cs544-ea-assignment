@@ -1,8 +1,8 @@
 package app.required.repositories;
 
-import app.required.domain.Customer;
+import app.required.domain.CustomerR;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<CustomerR, Long> {
 
 }

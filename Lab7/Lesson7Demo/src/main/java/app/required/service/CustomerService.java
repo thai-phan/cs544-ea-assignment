@@ -1,6 +1,6 @@
 package app.required.service;
 
-import app.required.domain.Customer;
+import app.required.domain.CustomerR;
 import app.required.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +13,9 @@ public class CustomerService {
 
   @Transactional
   public void createCustomer(String name) {
-    Customer customer = new Customer(name);
+    CustomerR customerR = new CustomerR(name);
     if (name.equals("Bob")) throw new RuntimeException();
-    customerRepository.save(customer);
+    customerRepository.save(customerR);
 
   }
 }
