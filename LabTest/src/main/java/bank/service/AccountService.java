@@ -4,9 +4,6 @@ import java.util.Collection;
 
 import bank.dao.AccountRepository;
 import bank.domain.Account;
-import bank.service.adapter.AccountAdapter;
-import bank.service.dto.AccountDTO;
-import bank.service.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,20 +17,13 @@ public class AccountService implements IAccountService {
   private ICurrencyConverter currencyConverter;
 
 
-
-  public AccountDTO createAccount(long accountNumber, String customerName) {
-    AccountDTO accountDTO = new AccountDTO(accountNumber);
-    CustomerDTO customerDTO = new CustomerDTO(customerName);
-//
-//    Account account = AccountAdapter.getAccountFromDTO(accountDTO);
-//    Customer customer = CustomerAdapter.getCustomerFromDTO(customerDTO);
+  public Account createAccount(long accountNumber, String customerName) {
 
     Account account = new Account(accountNumber);
     account.deposit(10.00);
 
-
     accountRepository.save(account);
-    return accountDTO;
+    return account;
   }
 
   public void deposit(long accountNumber, double amount) {
@@ -43,13 +33,13 @@ public class AccountService implements IAccountService {
     accountRepository.save(account);
   }
 
-  public AccountDTO getAccount(long accountNumber) {
+  public Account getAccount(long accountNumber) {
     Account account = accountRepository.getAccountByAccountNumber(accountNumber);
-    return AccountAdapter.getDTOFromAccount(account);
+    return account;
   }
 
-  public Collection<AccountDTO> getAllAccounts() {
-    return AccountAdapter.getDTOsFromAccounts(accountRepository.findAll());
+  public Collection<Account> getAllAccounts() {
+    return accountRepository.findAll();
   }
 
   public void withdraw(long accountNumber, double amount) {

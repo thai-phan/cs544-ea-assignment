@@ -1,11 +1,11 @@
 package bank.dao;
 
-import bank.domain.Flight;
+import bank.domain.Passenger;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FlightDAO extends JpaRepository<Flight, Long> {
+public interface PassengerRepository extends JpaRepository<Passenger, Long> {
 
 
 }

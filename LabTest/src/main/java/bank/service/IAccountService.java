@@ -2,15 +2,15 @@ package bank.service;
 
 import java.util.Collection;
 
-import bank.service.dto.AccountDTO;
+import bank.domain.Account;
 
 
 public interface IAccountService {
-  AccountDTO createAccount(long accountNumber, String customerName);
+  Account createAccount(long accountNumber, String customerName);
 
-  AccountDTO getAccount(long accountNumber);
+  Account getAccount(long accountNumber);
 
-  Collection<AccountDTO> getAllAccounts();
+  Collection<Account> getAllAccounts();
 
   void deposit(long accountNumber, double amount);
 

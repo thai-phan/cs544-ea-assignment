@@ -13,10 +13,8 @@ public class Passenger {
 
   private String name;
 
-
-  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
   @JoinColumn(name = "passenger_id")
-  @OrderColumn(name = "flight_order")
   private List<Flight> flights = new ArrayList<>();
 
   public Passenger() {

@@ -10,9 +10,12 @@ import java.util.*;
 public class Account {
 
   @Id
+//  @GeneratedValue
+//  private Integer id;
+
   long accountNumber;
 
-  @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   @JoinColumn(name = "account_id")
   Collection<AccountEntry> entryList = new ArrayList<>();
 
@@ -21,7 +24,7 @@ public class Account {
     this.accountNumber = accountNumber;
   }
 
-  protected Account() {
+  public Account() {
 
   }
 
@@ -51,7 +54,7 @@ public class Account {
     entryList.add(entry);
   }
 
-  private void addEntry(AccountEntry entry) {
+  public void addEntry(AccountEntry entry) {
     entryList.add(entry);
   }
 
@@ -65,5 +68,6 @@ public class Account {
   public Collection<AccountEntry> getEntryList() {
     return entryList;
   }
+
 
 }

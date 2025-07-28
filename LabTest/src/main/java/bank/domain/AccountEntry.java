@@ -23,7 +23,7 @@ public class AccountEntry {
 
 	private String fromAccountNumber;
 
-	protected AccountEntry() {
+	public AccountEntry() {
 	}
 
 	public AccountEntry(Date date, double amount, String description, String fromAccountNumber) {
