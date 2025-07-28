@@ -21,6 +21,10 @@ public class TraceRecord {
 
   }
 
+  public TraceRecord() {
+
+  }
+
   public void setDate(Date date) {
     this.date = date;
   }

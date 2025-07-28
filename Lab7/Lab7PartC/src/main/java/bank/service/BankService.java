@@ -42,9 +42,10 @@ public class BankService {
     } catch (Exception e) {
       String message = "Could not create customer " + customerName + "created with account " + AccountNumber;
       TraceRecord traceRecord = new TraceRecord(Date.from(java.time.Instant.now()), message);
-      traceRecordRepository.save(traceRecord);
+      traceRecordRepository.saveTraceRecord(traceRecord);
       emailSender.sendEmail(emailAddress, "We could not create your account " + customerName);
-      throw e; // Optionally rethrow the exception to trigger a rollback
+      throw e;
     }
   }
+
 }
