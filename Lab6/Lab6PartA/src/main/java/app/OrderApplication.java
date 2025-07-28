@@ -1,16 +1,19 @@
 package app;
 
 import domain.*;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import repositories.*;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootApplication
 @EnableJpaRepositories("repositories")
@@ -43,10 +46,87 @@ public class OrderApplication implements CommandLineRunner {
     orderRepository.save(o3);
     orderRepository.save(o4);
 
+    getWithMethodName();
+
+    namedQuery();
+
+    JPQLQueries();
+
+    nativeQuery();
+
+    specificationQueries();
+  }
+
+  private void specificationQueries() {
+    Specification<Order> orderSpecification = OrderSpecifications.isClosed();
+    List<Order> orders= orderRepository.findAll(orderSpecification);
+    System.out.println("------All orders with status closed-------------------");
+    orders.forEach(OrderApplication::printOrder);
+
+    Specification<Customer> customerSpecification = CustomerSpecifications.isFromCity("Amsterdam");
+    List<Customer> customers = customerRepository.findAll(customerSpecification);
+    System.out.println("------All customers from Amsterdam-------------------");
+    customers.forEach(System.out::println);
+
+    Specification<CD> cdSpecification = CDSpecifications.isFromArtist("U2").and(CDSpecifications.withPriceLargerThan(10));
+    List<CD> cds = cdRepository.findAll(cdSpecification);
+    System.out.println("------All CDs from U2 with price bigger than 10-------------------");
+    cds.forEach(System.out::println);
+  }
+
+  private void nativeQuery() {
+    List<Address> addresses = addressRepository.getAllAddressesFromCity("Amsterdam");
+    System.out.println("------All addresses from Amsterdam-------------------");
+    addresses.forEach(System.out::println);
+
+    List<CD> cds = cdRepository.findByAnArtist("U2");
+    System.out.println("------All CDs from U2-------------------");
+    cds.forEach(System.out::println);
+  }
+
+  private void JPQLQueries() {
+    List<String> orderNumbers = orderRepository.getOrderNumbersFromOrdersWithStatusClosed();
+    System.out.println("------All order numbers with status closed-------------------");
+    orderNumbers.forEach(System.out::println);
+
+    List<Customer> customers = customerRepository.getAllCustomersFromCity("Amsterdam");
+    System.out.println("------All customers from Amsterdam-------------------");
+    customers.forEach(System.out::println);
+
+    List<String> ordersFromCity = orderRepository.getOrderNumbersFromOrdersFromCity("Amsterdam");
+    System.out.println("------All order numbers from customers who live in Amsterdam-------------------");
+    ordersFromCity.forEach(System.out::println);
+
+    List<CD> cds = cdRepository.getAllCDsFromArtistAndPriceBiggerThan("U2", 10);
+    System.out.println("------All CDs from U2 with price bigger than 10-------------------");
+    cds.forEach(System.out::println);
+  }
+
+  private void namedQuery() {
+    List<Customer> customers = customerRepository.getAllCustomersFrom("USA");
+    System.out.println("------All customers from USA-------------------");
+    customers.forEach(System.out::println);
+
+    List<CD> cds = cdRepository.findByArtist("Queen");
+    System.out.println("------All CDs from Queen-------------------");
+    cds.forEach(System.out::println);
+  }
+
+  private void getWithMethodName() {
     getAllCustomers();
 
+    List<CD> cds = cdRepository.findByArtistAndPriceLessThan("U2", 10);
+    System.out.println("------CDs from U2 with price less than 10-------------------");
+    cds.forEach(System.out::println);
 
 
+    List<Customer> customers1 = customerRepository.findByAddressZip("2389HJ");
+    System.out.println("------Customers from zip 2389HJ-------------------");
+    customers1.forEach(System.out::println);
+
+    List<Customer> customers2 = customerRepository.findByOrdersOrderLinesProductName("Rocky3");
+    System.out.println("------Customers who ordered Rocky3-------------------");
+    customers2.forEach(System.out::println);
   }
 
 

@@ -17,7 +17,7 @@ public class Customer {
   private long id;
 
   @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "customer")
-  private Collection<Order> theorders = new ArrayList<Order>();
+  private Collection<Order> orders = new ArrayList<>();
 
   @ManyToOne(cascade = {CascadeType.PERSIST})
   private Address address;
@@ -33,7 +33,7 @@ public class Customer {
   }
 
   public void addOrder(Order order) {
-    theorders.add(order);
+    orders.add(order);
   }
 
   public String getFirstname() {
@@ -61,11 +61,11 @@ public class Customer {
   }
 
   public Collection<Order> getTheOrders() {
-    return theorders;
+    return orders;
   }
 
   public void setTheOrders(Collection<Order> theOrders) {
-    this.theorders = theOrders;
+    this.orders = theOrders;
   }
 
   public Address getAddress() {

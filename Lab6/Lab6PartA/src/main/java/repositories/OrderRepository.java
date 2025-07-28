@@ -12,8 +12,8 @@ public interface OrderRepository extends JpaRepository<Order, Long> , JpaSpecifi
     @Query("select o.orderNumber from Order o where o.status = 'closed'")
     List<String> getOrderNumbersFromOrdersWithStatusClosed();
 
-//    @Query("select o.ordernr from Order o join o.orderlines ol where TYPE(ol.product) = CD")
-//    List<String> getOrderNumbersFromOrdersWhichContainU2CDs();
+    @Query("select o.orderNumber from Order o join o.orderLines ol where TYPE(ol.product) = CD")
+    List<String> getOrderNumbersFromOrdersWhichContainU2CDs();
 
     @Query("select o.orderNumber from Order o where o.customer.address.city = :city")
     List<String> getOrderNumbersFromOrdersFromCity(@Param("city")String city);
