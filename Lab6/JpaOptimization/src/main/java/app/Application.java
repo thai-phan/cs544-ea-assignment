@@ -15,15 +15,58 @@ public class Application implements CommandLineRunner {
   @Autowired
   CustomerRepository customerRepository;
 
+  @Autowired
+  SchoolRepository schoolRepository;
+
   public static void main(String[] args) {
     SpringApplication.run(Application.class, args);
   }
 
   @Override
   public void run(String... args) throws Exception {
-    insertCustomers();
-    retrieveCustomers();
-    updateCustomers();
+//    insertCustomers();
+//    retrieveCustomers();
+//    updateCustomers();
+//    insertSchools();
+//    retrieveSchools();
+    retrieveSchoolsWithStudents();
+  }
+
+  private void insertSchools() {
+    for (int x = 0; x < 50000; x++) {
+      School school = new School("School " + x);
+      Student student = new Student("Student " + x, "", "student" + x + "@school.com");
+      Student student2 = new Student("Student2 "+ x, "", "student2" + x + "@school.com");
+
+      school.addStudent(student);
+      school.addStudent(student2);
+
+      schoolRepository.save(school);
+      System.out.println("Inserting school  " + x);
+
+    }
+  }
+
+  private void retrieveSchools() {
+    System.out.println("Retrieving all schools ...");
+    long start = System.currentTimeMillis();
+
+    List<School> schools = schoolRepository.findAll();
+    long finish = System.currentTimeMillis();
+    long timeElapsed = finish - start;
+    System.out.println(schools);
+    System.out.println("To retrieve all Schools took " + timeElapsed + " ms");
+  }
+
+  private void retrieveSchoolsWithStudents() {
+    System.out.println("Retrieving all schools with students ...");
+    long start = System.currentTimeMillis();
+
+    List<School> schools = schoolRepository.findAllSchools();
+    long finish = System.currentTimeMillis();
+    long timeElapsed = finish - start;
+    System.out.println(schools);
+    System.out.println("To retrieve all Schools with Students took " + timeElapsed + " ms");
   }
 
   private void insertCustomers() {
@@ -50,11 +93,12 @@ public class Application implements CommandLineRunner {
     System.out.println("Change the name of all customers ...");
     long start = System.currentTimeMillis();
 
-    List<Customer> customers = customerRepository.findAll();
-    for (Customer c : customers) {
-      c.setName("James Bond");
-      customerRepository.save(c);
-    }
+//    List<Customer> customers = customerRepository.findAll();
+    customerRepository.updateAllCustomers("James Ahiii");
+//    for (Customer c : customers) {
+//      c.setName("James Bond");
+//      customerRepository.save(c);
+//    }
     long finish = System.currentTimeMillis();
     long timeElapsed = finish - start;
     System.out.println("To change the name of all customers took " + timeElapsed + " ms");

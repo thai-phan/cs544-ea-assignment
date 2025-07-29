@@ -1,12 +1,14 @@
 package app;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Student {
 
   @Id
+  @GeneratedValue
   private long id;
 
   private String firstName;
@@ -21,5 +23,15 @@ public class Student {
 
   protected Student() {
 
+  }
+
+  @Override
+  public String toString() {
+    return "Student{" +
+        "id=" + id +
+        ", firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", emailAddress='" + emailAddress + '\'' +
+        '}';
   }
 }
