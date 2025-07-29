@@ -36,16 +36,19 @@ public class BookController {
 
   @GetMapping("/{isbn}")
   public ResponseEntity<BookDTO> getBook(@PathVariable String isbn) {
-    return ResponseEntity.ok(bookService.getBook(isbn));
+    BookDTO bookDTO = bookService.getBook(isbn);
+    return ResponseEntity.ok(bookDTO);
   }
 
   @GetMapping
   public ResponseEntity<List<BookDTO>> getAllBooks() {
-    return ResponseEntity.ok(bookService.getAllBooks());
+    List<BookDTO> bookDTOS = bookService.getAllBooks();
+    return ResponseEntity.ok(bookDTOS);
   }
 
   @GetMapping("/search")
   public ResponseEntity<List<BookDTO>> searchBooks(@RequestParam String author) {
-    return ResponseEntity.ok(bookService.searchBooksByAuthor(author));
+    List<BookDTO> bookDTOS = bookService.searchBooksByAuthor(author);
+    return ResponseEntity.ok(bookDTOS);
   }
 }
