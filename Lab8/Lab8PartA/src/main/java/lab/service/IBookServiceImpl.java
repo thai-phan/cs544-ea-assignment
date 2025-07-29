@@ -18,6 +18,9 @@ public class IBookServiceImpl implements IBookService {
 
   @Override
   public BookDTO addBook(BookDTO bookDTO) {
+    if (bookRepository.existsById(bookDTO.getIsbn())) {
+      throw new BookAlreadyExistsException(bookDTO.getIsbn());
+    }
     Book book = BookAdapter.convertDTOToBook(bookDTO);
     bookRepository.save(book);
     return bookDTO;
