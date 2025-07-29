@@ -6,20 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import bank.service.BankService;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner{
+public class AppLab7PartA implements CommandLineRunner{
 	
 	@Autowired
 	BankService bankService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(AppLab7PartA.class, args);
 	}
 
 	@Override

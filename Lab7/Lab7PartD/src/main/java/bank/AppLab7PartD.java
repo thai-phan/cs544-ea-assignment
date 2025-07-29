@@ -13,13 +13,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class AppLab7PartD implements CommandLineRunner {
 
   @Autowired
   IAccountService accountService;
 
   public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
+    SpringApplication.run(AppLab7PartD.class, args);
   }
 
   @Override
