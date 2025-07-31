@@ -1,4 +1,6 @@
 **/target/
+**/.settings
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
