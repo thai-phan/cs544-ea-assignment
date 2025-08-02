@@ -66,11 +66,14 @@ public class AccountService implements IAccountService {
     return AccountAdapter.getDTOsFromAccounts(accountRepository.findAll());
   }
 
+  public boolean isWithdrawPossible(long accountNumber, double amount) {
+    Account account = accountRepository.getAccountByAccountNumber(accountNumber);
+    return !(account.getBalance() < amount);
+  }
+
   public void withdraw(long accountNumber, double amount) {
     Account account = accountRepository.getAccountByAccountNumber(accountNumber);
-    if (amount > account.getBalance()) {
-      throw new IllegalArgumentException("Insufficient funds for withdrawal");
-    }
+
     account.withdraw(amount);
     accountRepository.save(account);
     logger.log("withdraw with parameters accountNumber= " + accountNumber + " , amount= " + amount);

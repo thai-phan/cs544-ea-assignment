@@ -3,32 +3,37 @@ package bank.controller;
 import bank.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/accounts")
+
 public class BankController {
   @Autowired
   private IAccountService accountService;
 
+  @GetMapping("/hi")
+  public ResponseEntity<?> getAccount() {
+    return ResponseEntity.ok("Deposit successful");
 
-  @PostMapping("/accounts/{accountNumber}/deposit")
-  public ResponseEntity<String> deposit(@PathVariable long accountNumber, @RequestBody double amount) {
+  }
+
+  @PostMapping("/deposit")
+  public ResponseEntity<String> deposit(@RequestBody long accountNumber, @RequestBody double amount) {
     accountService.deposit(accountNumber, amount);
     return ResponseEntity.ok("Deposit successful");
 
   }
 
-  @PostMapping("/accounts/{accountNumber}/withdraw")
-  public ResponseEntity<String> withdraw(@PathVariable long accountNumber, @RequestBody double amount) {
-    try {
-      accountService.withdraw(accountNumber, amount);
-      return ResponseEntity.ok("Withdrawal successful");
-    } catch (Exception e) {
-      return ResponseEntity.badRequest().body("Withdrawal failed: " + e.getMessage());
-    }
+  @PostMapping("/{account}/withdraw")
+  public ResponseEntity<String> withdraw(@PathVariable("account") long account, @RequestBody double amount ) {
+//    long accountNumber = 1263862;
+//    double amount = 99999;
+    if (!accountService.isWithdrawPossible(account, amount)) {
+      throw new RuntimeException("Insufficient funds for withdrawal");
 
+    }
+    accountService.withdraw(account, amount);
+    return ResponseEntity.ok("Withdrawal successful");
   }
 }

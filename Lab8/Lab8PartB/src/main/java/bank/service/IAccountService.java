@@ -14,6 +14,8 @@ public interface IAccountService {
 
   void deposit(long accountNumber, double amount);
 
+  boolean isWithdrawPossible(long accountNumber, double amount);
+
   void withdraw(long accountNumber, double amount);
 
   void depositEuros(long accountNumber, double amount);

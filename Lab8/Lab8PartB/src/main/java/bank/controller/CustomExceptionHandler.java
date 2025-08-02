@@ -12,8 +12,17 @@ import java.util.Map;
 
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+  @ExceptionHandler(AlreadyExistsException.class)
+  public ResponseEntity<Object> handleBookAlreadyExists(AlreadyExistsException ex, WebRequest request) {
+    Map<String, Object> body = new HashMap<>();
+    body.put("isSuccess", false);
+    body.put("error", ex.getMessage());
+    body.put("status", HttpStatus.CONFLICT);
+    return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+  }
+
   @ExceptionHandler(value = { Exception.class})
-  protected ResponseEntity<Object> handleConflict(RuntimeException exception, WebRequest request) {
+  public ResponseEntity<Object> handleConflict(Exception exception, WebRequest request) {
     Map<String, Object> map = new HashMap<>();
     map.put("isSuccess", false);
     map.put("error", exception.getMessage());
