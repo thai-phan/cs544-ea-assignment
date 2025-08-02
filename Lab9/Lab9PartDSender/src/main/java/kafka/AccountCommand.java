@@ -1,23 +1,23 @@
 package kafka;
 
 
-public class AccountReceiver {
+public class AccountCommand {
   private long accountNumber;
   private double amount;
   private String operation;
   private long toAccountNumber;
   private String description;
 
-  public AccountReceiver() {
+  public AccountCommand() {
   }
 
-  public AccountReceiver(long accountNumber, double amount, String operation) {
+  public AccountCommand(long accountNumber, double amount, String operation) {
     this.accountNumber = accountNumber;
     this.amount = amount;
     this.operation = operation;
   }
 
-  public AccountReceiver(long accountNumber, double amount, String operation, long toAccountNumber, String description) {
+  public AccountCommand(long accountNumber, double amount, String operation, long toAccountNumber, String description) {
     this.accountNumber = accountNumber;
     this.amount = amount;
     this.operation = operation;

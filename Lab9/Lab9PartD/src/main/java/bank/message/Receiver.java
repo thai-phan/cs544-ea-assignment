@@ -5,14 +5,11 @@ import bank.service.IAccountService;
 import bank.service.dto.AccountDTO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Objects;
 
 @Service
 public class Receiver {
@@ -52,9 +49,6 @@ public class Receiver {
       }
       if (operation.equals("transferFunds")) {
         accountService.transferFunds(accountNumber, toAccountNumber, amount, description);
-      }
-      if (operation.equals("depositEuros")) {
-        accountService.depositEuros(accountNumber, amount);
       }
       accountService.deposit(accountNumber, amount);
     } catch (IOException e) {
