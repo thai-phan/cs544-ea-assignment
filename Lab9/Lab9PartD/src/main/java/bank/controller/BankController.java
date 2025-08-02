@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/accounts")
@@ -16,11 +18,15 @@ public class BankController {
   @Autowired
   private IAccountService accountService;
 
-  @PostMapping("/createAccount")
-  public ResponseEntity<?> createAccount(@RequestParam(value = "accountNumber") long accountNumber,
-                                         @RequestParam(value = "customerName") String customerName) {
+  @PostMapping("/create-account")
+  public ResponseEntity<?> createAccount(@RequestBody Map<String, Object> body) {
+    long accountNumber = (long) body.get("accountNumber");
+    String customerName = (String) body.get("customerName");
+    if (Objects.isNull(customerName) || customerName.isEmpty()) {
+      return new ResponseEntity<>("Customer name cannot be empty", HttpStatus.BAD_REQUEST);
+    }
     AccountDTO accountDto = accountService.createAccount(accountNumber, customerName);
-    return new ResponseEntity<>(accountDto, HttpStatus.OK);
+    return new ResponseEntity<AccountDTO>(accountDto, HttpStatus.OK);
   }
 
   @PostMapping("/account")
