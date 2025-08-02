@@ -52,10 +52,6 @@ public class BankController {
     if (operation.equals("transferFunds")) {
       accountService.transferFunds(accountNumber, toAccountNumber, amount, description);
     }
-    if (operation.equals("depositEuros")) {
-      accountService.depositEuros(accountNumber, amount);
-      return ResponseEntity.ok("Deposit in Euros successful");
-    }
     accountService.deposit(accountNumber, amount);
     return ResponseEntity.ok("Deposit successful");
   }
