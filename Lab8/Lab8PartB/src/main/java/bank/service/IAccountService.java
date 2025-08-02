@@ -14,7 +14,7 @@ public interface IAccountService {
 
   void deposit(long accountNumber, double amount);
 
-  boolean isWithdrawPossible(long accountNumber, double amount);
+  boolean isWithdrawPossible(long accountNumber, double amount, String currency);
 
   void withdraw(long accountNumber, double amount);
 
