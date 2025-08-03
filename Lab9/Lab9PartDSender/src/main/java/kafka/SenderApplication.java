@@ -33,7 +33,7 @@ public class SenderApplication implements CommandLineRunner {
   }
 
   public void createAccount(AccountCreation accountCreation) throws JsonProcessingException {
-    System.out.println("Starting to send a message");
+    System.out.println("Starting to send a createAccount message");
     ObjectMapper objectMapper = new ObjectMapper();
     String accountAsString = objectMapper.writeValueAsString(accountCreation);
     sender.send("topicBankAccountCreation", accountAsString);
