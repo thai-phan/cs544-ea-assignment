@@ -19,9 +19,9 @@ public class BankController {
   private IAccountService accountService;
 
   @PostMapping("/create-account")
-  public ResponseEntity<?> createAccount(@RequestBody Map<String, Object> body) {
-    long accountNumber = (long) body.get("accountNumber");
-    String customerName = (String) body.get("customerName");
+  public ResponseEntity<?> createAccount(@RequestBody AccountCreation body) {
+    long accountNumber = body.getAccountNumber();
+    String customerName = body.getCustomerName();
     if (Objects.isNull(customerName) || customerName.isEmpty()) {
       return new ResponseEntity<>("Customer name cannot be empty", HttpStatus.BAD_REQUEST);
     }

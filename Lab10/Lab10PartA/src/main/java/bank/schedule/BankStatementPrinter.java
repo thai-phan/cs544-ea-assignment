@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class BankStatementPrinter {
 
-  @Autowired
-  AccountService accountService;
-
-  @Scheduled(fixedRate = 10000)
-  public void printer() {
-    System.out.println(accountService.getAllAccounts());
-  }
+//  @Autowired
+//  AccountService accountService;
+//
+//  @Scheduled(fixedRate = 10000)
+//  public void printer() {
+//    System.out.println(accountService.getAllAccounts());
+//  }
 }
