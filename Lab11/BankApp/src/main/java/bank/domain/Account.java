@@ -24,7 +24,7 @@ public class Account {
     this.accountNumber = accountNumber;
   }
 
-  protected Account() {
+  public Account() {
 
   }
 
