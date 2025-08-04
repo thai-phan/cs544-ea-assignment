@@ -12,23 +12,23 @@ import accounts.service.AccountService;
 
 @RestController
 public class AccountController {
-	@Autowired
-	AccountService accountService;
+  @Autowired
+  AccountService accountService;
 
-	@RequestMapping("/account/{accountNumber}")
-	public ResponseEntity<?> getAccount(@PathVariable("accountNumber") String accountNumber) {
-		AccountDTO account = accountService.getAccount(accountNumber);
-		if (account != null) {
-			return new ResponseEntity<AccountDTO>(account, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<String>("Account with account number " + accountNumber + " is not available",
-					HttpStatus.NOT_FOUND);
-		}
-	}
+  @RequestMapping("/account/{accountNumber}")
+  public ResponseEntity<?> getAccount(@PathVariable("accountNumber") String accountNumber) {
+    AccountDTO account = accountService.getAccount(accountNumber);
+    if (account != null) {
+      return new ResponseEntity<>(account, HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>("Account with account number " + accountNumber + " is not available",
+          HttpStatus.NOT_FOUND);
+    }
+  }
 
-	@RequestMapping("/createaccount/{accountNumber}/{amount}/{accountHolder}")
-	public ResponseEntity<?> createAccount(@PathVariable("accountNumber") String accountNumber,@PathVariable("amount") String sAmount, @PathVariable("accountHolder") String accountHolder) {
-		accountService.createAccount(accountNumber,Double.parseDouble(sAmount),accountHolder);
-		return new ResponseEntity<String>("Account with account number " + accountNumber + " is created",HttpStatus.OK);
-	}
+  @RequestMapping("/createaccount/{accountNumber}/{amount}/{accountHolder}")
+  public ResponseEntity<?> createAccount(@PathVariable("accountNumber") String accountNumber, @PathVariable("amount") String sAmount, @PathVariable("accountHolder") String accountHolder) {
+    accountService.createAccount(accountNumber, Double.parseDouble(sAmount), accountHolder);
+    return new ResponseEntity<String>("Account with account number " + accountNumber + " is created", HttpStatus.OK);
+  }
 }

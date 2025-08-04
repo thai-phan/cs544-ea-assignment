@@ -8,10 +8,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("accounts.repositories")
-@EntityScan("accounts.domain") 
+@EntityScan("accounts.domain")
 public class AccountServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AccountServiceApplication.class, args);
-	}
+
+  public static void main(String[] args) {
+    SpringApplication.run(AccountServiceApplication.class, args);
+  }
+
+
 }
