@@ -1,0 +1,124 @@
+2025-08-03T22:11:19.387-05:00  INFO 56300 --- [main] bank.AppLab10                            : Starting AppLab10 using Java 21.0.6 with PID 56300 (/Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB/target/classes started by thaiphan in /Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB)
+2025-08-03T22:11:19.388-05:00  INFO 56300 --- [main] bank.AppLab10                            : No active profile set, falling back to 1 default profile: "default"
+2025-08-03T22:11:19.711-05:00  INFO 56300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-03T22:11:19.730-05:00  INFO 56300 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 2 JPA repository interfaces.
+2025-08-03T22:11:19.974-05:00  INFO 56300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-03T22:11:19.985-05:00  INFO 56300 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-03T22:11:19.985-05:00  INFO 56300 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-08-03T22:11:20.001-05:00  INFO 56300 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-03T22:11:20.001-05:00  INFO 56300 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2025-08-03T22:11:20.121-05:00  INFO 56300 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-03T22:11:20.138-05:00  INFO 56300 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-08-03T22:11:20.149-05:00  INFO 56300 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-03T22:11:20.240-05:00  INFO 56300 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-03T22:11:20.251-05:00  INFO 56300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-03T22:11:20.375-05:00  INFO 56300 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bc8caa7
+2025-08-03T22:11:20.376-05:00  INFO 56300 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-03T22:11:20.410-05:00  INFO 56300 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-03T22:11:20.753-05:00  INFO 56300 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-03T22:11:20.837-05:00  INFO 56300 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:11:21.043-05:00  WARN 56300 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-03T22:11:21.392-05:00  INFO 56300 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2025-08-03T22:11:21.435-05:00  INFO 56300 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-03T22:11:21.443-05:00  INFO 56300 --- [main] bank.AppLab10                            : Started AppLab10 in 2.23 seconds (process running for 2.473)
+2025-08-03T22:11:21.445-05:00  INFO 56300 --- [main] bank.AppLab10                            : An INFO Message
+2025-08-03T22:11:21.446-05:00  WARN 56300 --- [main] bank.AppLab10                            : A WARN Message
+2025-08-03T22:11:21.446-05:00 ERROR 56300 --- [main] bank.AppLab10                            : An ERROR Message
+2025-08-03T22:11:21.706-05:00  INFO 56300 --- [RMI TCP Connection(1)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-03T22:11:21.706-05:00  INFO 56300 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-03T22:11:21.707-05:00  INFO 56300 --- [RMI TCP Connection(1)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-08-03T22:32:53.841-05:00  INFO 56300 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-03T22:32:53.846-05:00  INFO 56300 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-03T22:32:53.850-05:00  INFO 56300 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:32:53.851-05:00  INFO 56300 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-03T22:32:53.853-05:00  INFO 56300 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-03T22:32:54.893-05:00  INFO 56381 --- [main] bank.AppLab10                            : Starting AppLab10 using Java 21.0.6 with PID 56381 (/Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB/target/classes started by thaiphan in /Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB)
+2025-08-03T22:32:54.894-05:00  INFO 56381 --- [main] bank.AppLab10                            : No active profile set, falling back to 1 default profile: "default"
+2025-08-03T22:32:55.226-05:00  INFO 56381 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-03T22:32:55.246-05:00  INFO 56381 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 2 JPA repository interfaces.
+2025-08-03T22:32:55.484-05:00  INFO 56381 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-03T22:32:55.490-05:00  INFO 56381 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-03T22:32:55.490-05:00  INFO 56381 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-08-03T22:32:55.505-05:00  INFO 56381 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-03T22:32:55.505-05:00  INFO 56381 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 597 ms
+2025-08-03T22:32:55.629-05:00  INFO 56381 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-03T22:32:55.646-05:00  INFO 56381 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-08-03T22:32:55.656-05:00  INFO 56381 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-03T22:32:55.749-05:00  INFO 56381 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-03T22:32:55.761-05:00  INFO 56381 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-03T22:32:55.908-05:00  INFO 56381 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fccf49e
+2025-08-03T22:32:55.909-05:00  INFO 56381 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-03T22:32:55.989-05:00  INFO 56381 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-03T22:32:56.337-05:00  INFO 56381 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-03T22:32:56.428-05:00  INFO 56381 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:32:56.649-05:00  WARN 56381 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-03T22:32:57.000-05:00  INFO 56381 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-08-03T22:32:57.045-05:00  INFO 56381 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-03T22:32:57.053-05:00  INFO 56381 --- [main] bank.AppLab10                            : Started AppLab10 in 2.317 seconds (process running for 2.54)
+2025-08-03T22:32:57.056-05:00  INFO 56381 --- [main] bank.AppLab10                            : An INFO Message
+2025-08-03T22:32:57.056-05:00  WARN 56381 --- [main] bank.AppLab10                            : A WARN Message
+2025-08-03T22:32:57.056-05:00 ERROR 56381 --- [main] bank.AppLab10                            : An ERROR Message
+2025-08-03T22:32:57.110-05:00  INFO 56381 --- [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-03T22:32:57.110-05:00  INFO 56381 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-03T22:32:57.110-05:00  INFO 56381 --- [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2025-08-03T22:35:13.273-05:00  INFO 56381 --- [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-03T22:35:13.278-05:00  INFO 56381 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-03T22:35:13.282-05:00  INFO 56381 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:35:13.283-05:00  INFO 56381 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-03T22:35:13.285-05:00  INFO 56381 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-08-03T22:35:14.250-05:00  INFO 56396 --- [main] bank.AppLab10                            : Starting AppLab10 using Java 21.0.6 with PID 56396 (/Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB/target/classes started by thaiphan in /Users/thaiphan/sources/cs544-assignment/Lab10/Lab10PartAB)
+2025-08-03T22:35:14.250-05:00  INFO 56396 --- [main] bank.AppLab10                            : No active profile set, falling back to 1 default profile: "default"
+2025-08-03T22:35:14.581-05:00  INFO 56396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-03T22:35:14.601-05:00  INFO 56396 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 2 JPA repository interfaces.
+2025-08-03T22:35:14.835-05:00  INFO 56396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-03T22:35:14.846-05:00  INFO 56396 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-03T22:35:14.846-05:00  INFO 56396 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-08-03T22:35:14.862-05:00  INFO 56396 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-03T22:35:14.863-05:00  INFO 56396 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 598 ms
+2025-08-03T22:35:14.985-05:00  INFO 56396 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-03T22:35:15.003-05:00  INFO 56396 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-08-03T22:35:15.015-05:00  INFO 56396 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-03T22:35:15.111-05:00  INFO 56396 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-03T22:35:15.122-05:00  INFO 56396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-03T22:35:15.247-05:00  INFO 56396 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1cfa7ee0
+2025-08-03T22:35:15.247-05:00  INFO 56396 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-03T22:35:15.278-05:00  INFO 56396 --- [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-03T22:35:15.628-05:00  INFO 56396 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-03T22:35:15.717-05:00  INFO 56396 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:35:15.927-05:00  WARN 56396 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-03T22:35:16.277-05:00  INFO 56396 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 15 endpoints beneath base path '/actuator'
+2025-08-03T22:35:16.320-05:00  INFO 56396 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-03T22:35:16.328-05:00  INFO 56396 --- [main] bank.AppLab10                            : Started AppLab10 in 2.23 seconds (process running for 2.448)
+2025-08-03T22:35:16.330-05:00  INFO 56396 --- [main] bank.AppLab10                            : An INFO Message
+2025-08-03T22:35:16.330-05:00  WARN 56396 --- [main] bank.AppLab10                            : A WARN Message
+2025-08-03T22:35:16.331-05:00 ERROR 56396 --- [main] bank.AppLab10                            : An ERROR Message
+2025-08-03T22:35:16.470-05:00  INFO 56396 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-03T22:35:16.470-05:00  INFO 56396 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-03T22:35:16.471-05:00  INFO 56396 --- [RMI TCP Connection(3)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-08-03T22:35:20.346-05:00  WARN 56396 --- [http-nio-8080-exec-1] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported
+2025-08-03T22:36:08.562-05:00  INFO 56396 --- [Thread-1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-03T22:36:08.576-05:00  INFO 56396 --- [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-03T22:36:08.586-05:00  INFO 56396 --- [Thread-1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-03T22:36:08.588-05:00  INFO 56396 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-03T22:36:08.592-05:00  INFO 56396 --- [Thread-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
