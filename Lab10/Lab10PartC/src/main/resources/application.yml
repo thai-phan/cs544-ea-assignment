@@ -1,0 +1,17 @@
+app:
+  name: BankApp
+  version: 1.0.0
+  server:
+    url: https://bank.example.com
+    name: MainBankServer
+  user:
+    firstname: John
+    lastname: Doe
+    username: john.doe
+    password: secret123
+  countries:
+    - USA
+    - Canada
+    - Mexico
+    - Germany
+    - Japan
