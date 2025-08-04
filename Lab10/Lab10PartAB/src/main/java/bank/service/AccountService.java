@@ -6,6 +6,7 @@ import java.util.Date;
 import bank.dao.AccountRepository;
 import bank.domain.Account;
 import bank.domain.Customer;
+import bank.logging.BankLogger;
 import bank.service.adapter.AccountAdapter;
 import bank.service.adapter.CustomerAdapter;
 import bank.jms.IJMSSender;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class AccountService implements IAccountService {
+
 
   @Autowired
   private AccountRepository accountRepository;
