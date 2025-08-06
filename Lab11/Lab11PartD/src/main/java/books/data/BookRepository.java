@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Repository
 public class BookRepository  {
 
-    private Map<String, Book> books = new HashMap<String, Book>();
+    private Map<String, Book> books = new HashMap<>();
 
     public void save(Book book){
         books.put(book.getIsbn(),book);

@@ -15,4 +15,11 @@ public class Books {
     public void setBooks(Collection<Book> books) {
         this.books = books;
     }
+
+  @Override
+  public String toString() {
+    return "Books{" +
+            "books=" + books +
+            '}';
+  }
 }

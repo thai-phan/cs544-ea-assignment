@@ -61,10 +61,10 @@ public class BookServiceController {
       //get books from a certain author
       String authorName = author.substring(1, author.length() - 1);
       //remove quotes form the name
-      List<Book> booklist = bookService.findByAuthor(authorName);
+      List<Book> booklist = bookService.findByAuthor(author);
       allbooks.setBooks(booklist);
     }
-    return new ResponseEntity<Books>(allbooks, HttpStatus.OK);
+    return new ResponseEntity<>(allbooks, HttpStatus.OK);
   }
 }
 
