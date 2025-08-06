@@ -16,34 +16,37 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsServiceImpl();
-    }
+  @Bean
+  public UserDetailsService userDetailsService() {
+    return new UserDetailsServiceImpl();
+  }
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
+  @Bean
+  public AuthenticationProvider authenticationProvider() {
+    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+    authProvider.setUserDetailsService(userDetailsService());
+    authProvider.setPasswordEncoder(passwordEncoder());
 
-        return authProvider;
-    }
+    return authProvider;
+  }
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests( authConfig -> {authConfig
-                .requestMatchers(HttpMethod.GET, "/info").permitAll()
-                .requestMatchers(HttpMethod.GET, "/user").hasAuthority("user")
-                .requestMatchers(HttpMethod.GET, "/admin").hasAuthority("admin");
-        }).httpBasic(Customizer.withDefaults());
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .authorizeHttpRequests(authConfig -> authConfig
+            .requestMatchers(HttpMethod.GET, "/info").permitAll()
+            .requestMatchers(HttpMethod.GET, "/user").hasAuthority("user")
+            .requestMatchers(HttpMethod.GET, "/admin").hasAuthority("admin")
+            .requestMatchers(HttpMethod.GET, "/manager").hasAuthority("manager")
+            .requestMatchers(HttpMethod.GET, "/topmanager").hasAuthority("topmanager")
+        )
+        .httpBasic(Customizer.withDefaults());
 
-        return http.build();
-    }
+    return http.build();
+  }
 }

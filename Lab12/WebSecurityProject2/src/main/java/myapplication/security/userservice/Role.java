@@ -6,26 +6,26 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Role {
-    @Id
-    @GeneratedValue
-    private int id;
-    private String role;
+  @Id
+  @GeneratedValue
+  private int id;
+  private String role;
 
-    public Role() {
-    }
+  public Role() {
+  }
 
-    public Role(String role) {
-        this.role = role;
-    }
+  public Role(String role) {
+    this.role = role;
+  }
 
-    public String getRole() {
-        return role;
-    }
+  public String getRole() {
+    return role;
+  }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                ", role='" + role + '\'' +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Role{" +
+        ", role='" + role + '\'' +
+        '}';
+  }
 }

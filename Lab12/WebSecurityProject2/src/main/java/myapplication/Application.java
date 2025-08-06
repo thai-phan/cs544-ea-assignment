@@ -26,5 +26,7 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         userRepo.save(new User("user", passwordEncoder.encode("user"), "user"));
         userRepo.save(new User("admin", passwordEncoder.encode("admin"), "admin"));
+        userRepo.save(new User("manager", passwordEncoder.encode("manager"), "manager"));
+        userRepo.save(new User("topmanager", passwordEncoder.encode("topmanager"), "topmanager"));
     }
 }

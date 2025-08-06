@@ -10,53 +10,53 @@ import java.util.List;
 
 public class SecurityUser implements UserDetails {
 
-    private final User user;
+  private final User user;
 
-    public SecurityUser(User user) {
-        this.user = user;
-    }
+  public SecurityUser(User user) {
+    this.user = user;
+  }
 
-    @Override
-    public String getUsername() {
-        return user.getUsername();
-    }
+  @Override
+  public String getUsername() {
+    return user.getUsername();
+  }
 
-    @Override
-    public String getPassword() {
-        return user.getPassword();
-    }
+  @Override
+  public String getPassword() {
+    return user.getPassword();
+  }
 
-    @Override
-    public List<GrantedAuthority> getAuthorities(){
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRole())));
-        return authorities;
-    }
+  @Override
+  public List<GrantedAuthority> getAuthorities() {
+    List<GrantedAuthority> authorities = new ArrayList<>();
+    user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getRole())));
+    return authorities;
+  }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 
-    @Override
-    public String toString() {
-        return "SecurityUser{" +
-                "user=" + user +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "SecurityUser{" +
+        "user=" + user +
+        '}';
+  }
 }
