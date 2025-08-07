@@ -18,22 +18,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
   @Bean
-  public InMemoryUserDetailsManager userDetailsService() {
-    UserDetails bob = User.builder()
-        .username("bob")
-        .password(passwordEncoder().encode("password"))
-        .roles("EMPLOYEE") // Spring adds "ROLE_" prefix
-        .authorities("DEPT_SALES")
-        .build();
-
-    UserDetails mary = User.builder()
-        .username("mary")
-        .password(passwordEncoder().encode("password"))
-        .roles("EMPLOYEE")
-        .authorities("DEPT_FINANCE")
-        .build();
-
-    return new InMemoryUserDetailsManager(bob, mary);
+  public InMemoryUserDetailsManager userDetailsService(PasswordEncoder bCryptPasswordEncoder) {
+    InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+    manager.createUser(User.withUsername("bob")
+        .password(bCryptPasswordEncoder.encode("password"))
+        .roles("employee", "sales")
+        .build());
+    manager.createUser(User.withUsername("mary")
+        .password(bCryptPasswordEncoder.encode("password"))
+        .roles("employee", "finance")
+        .build());
+    return manager;
   }
 
   @Bean
@@ -47,10 +42,9 @@ public class SecurityConfig {
     http
         .authorizeHttpRequests( authConfig -> {
           authConfig
-              .requestMatchers("/shop").permitAll()
-              .requestMatchers("/employee").hasRole("EMPLOYEE")
-              .requestMatchers("/orders").hasRole("EMPLOYEE")
-              .requestMatchers("/payments").hasAuthority("DEPT_FINANCE");
+              .requestMatchers("/shop").hasRole("employee")
+              .requestMatchers("/orders").hasRole("sales")
+              .requestMatchers("/payments").hasRole("finance");
         })
         .httpBasic(Customizer.withDefaults());
     return http.build();
