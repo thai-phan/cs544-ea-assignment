@@ -11,6 +11,16 @@ public class ShopController {
     return "Welcome to the shop!";
   }
 
+  @GetMapping("/role-employee")
+  public String employee() {
+    return "Employee area - access granted.";
+  }
+
+  @GetMapping("/role-sales")
+  public String sales() {
+    return "Sales department area - access granted.";
+  }
+
   @GetMapping("/orders")
   public String orders() {
     return "Orders for employees only.";

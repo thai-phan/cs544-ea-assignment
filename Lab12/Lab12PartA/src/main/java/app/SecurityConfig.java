@@ -48,6 +48,7 @@ public class SecurityConfig {
         .authorizeHttpRequests( authConfig -> {
           authConfig
               .requestMatchers("/shop").permitAll()
+              .requestMatchers("/employee").hasRole("EMPLOYEE")
               .requestMatchers("/orders").hasRole("EMPLOYEE")
               .requestMatchers("/payments").hasAuthority("DEPT_FINANCE");
         })
