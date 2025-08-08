@@ -1,6 +1,4 @@
-**/target/
-**/.settings
-
+/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -19,11 +17,9 @@
 *.ipr
 
 ### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-**/application.yml
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
