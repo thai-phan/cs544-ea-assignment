@@ -1,6 +1,8 @@
 package app;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,8 +18,10 @@ public class Application {
   }
 
   @Bean
-  public ChatClient chatClient(ChatModel chatModel) {
+  public ChatClient chatClient(ChatModel chatModel, ChatMemory chatMemory) {
     ChatClient.Builder builder = ChatClient.builder(chatModel);
+    builder.defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build());
+    builder.defaultAdvisors(new LoggingAdvisor());
     return builder.build();
   }
 
