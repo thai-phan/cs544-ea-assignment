@@ -1,4 +1,4 @@
-package app.logger;
+package app;
 
 import org.springframework.ai.chat.client.ChatClientRequest;
 import org.springframework.ai.chat.client.ChatClientResponse;

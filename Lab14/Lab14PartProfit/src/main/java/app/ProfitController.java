@@ -1,8 +1,5 @@
-package app.controller;
+package app;
 
-import app.domain.Profit;
-import app.repository.ProfitRepository;
-import app.tools.ProfitTool;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

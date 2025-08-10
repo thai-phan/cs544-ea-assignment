@@ -1,6 +1,5 @@
-package app.repository;
+package app;
 
-import app.domain.Profit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProfitRepository extends JpaRepository<Profit, Long> {

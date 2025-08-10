@@ -7,15 +7,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class CompanyController {
-    @Autowired
-    ChatClient chatClient;
+  @Autowired
+  ChatClient chatClient;
 
-    @Autowired
-    CompanyTool  companyTool;
+  @Autowired
+  CompanyTool companyTool;
 
-    @GetMapping("/chat")
-    public String chat(@RequestParam("message") String message){
-        return chatClient.prompt().tools(companyTool).user(message)
-                .call().content();
-    }
+  @GetMapping("/chat")
+  public String chat(@RequestParam("message") String message) {
+    return chatClient
+        .prompt()
+        .tools(companyTool)
+        .user(message)
+        .call().content();
+  }
 }

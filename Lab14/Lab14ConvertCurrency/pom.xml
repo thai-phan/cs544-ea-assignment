@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>miu.edu</groupId>
-	<artifactId>Lab14PartProfit</artifactId>
+	<artifactId>Lab14ConvertCurrency</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Lab14PartC</name>
 	<description>Demo project for Spring Boot</description>

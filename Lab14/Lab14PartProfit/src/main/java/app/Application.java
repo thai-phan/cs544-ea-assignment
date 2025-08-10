@@ -1,6 +1,5 @@
 package app;
 
-import app.logger.MyLoggingAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.boot.SpringApplication;

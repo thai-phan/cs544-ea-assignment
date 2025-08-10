@@ -2,6 +2,7 @@ package app;
 
 import app.logger.MyLoggingAdvisor;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +19,9 @@ public class Lab14PartCApplication {
 	@Bean
 	public ChatClient chatClient(ChatModel chatModel, ChatMemory chatMemory) {
 		ChatClient.Builder builder = ChatClient.builder(chatModel);
-		builder.defaultAdvisors(new MyLoggingAdvisor());
+    MessageChatMemoryAdvisor messageChatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
+    builder.defaultAdvisors(messageChatMemoryAdvisor);
+    builder.defaultAdvisors(new MyLoggingAdvisor());
 		return builder.build();
 	}
 }
